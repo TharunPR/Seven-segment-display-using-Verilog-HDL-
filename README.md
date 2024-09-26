@@ -112,7 +112,7 @@ Time=18000 | bcd=1001 | seg=0000100
 ```
 **Output waveform**
 
-![Screenshot 2024-09-26 122042](https://github.com/user-attachments/assets/9b5d684d-7ea5-40e0-aa08-0cf9db18f5cc)
+![Screenshot 2024-09-26 141241](https://github.com/user-attachments/assets/9a39dfa5-90cd-4074-8601-dd86e627c64e)
 
 **Conclusion**
 
