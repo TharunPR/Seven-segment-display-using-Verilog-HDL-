@@ -47,75 +47,72 @@
 **Verilog Code for Seven-Segment Display**
 
 ```
-module seven_segment_display (
-    input wire [3:0] binary_input,
-    output reg [6:0] seg_output
+module bcd_7_seg(
+  output reg [6:0] seg,
+  input [3:0] bcd
 );
-    always @(*) begin
-        case (binary_input)
-            4'b0000: seg_output = 7'b0111111; // 0
-            4'b0001: seg_output = 7'b0000110; // 1
-            4'b0010: seg_output = 7'b1011011; // 2
-            4'b0013: seg_output = 7'b1001111; // 3
-            4'b0100: seg_output = 7'b1100110; // 4
-            4'b0101: seg_output = 7'b1101101; // 5
-            4'b0110: seg_output = 7'b1111101; // 6
-            4'b0111: seg_output = 7'b0000111; // 7
-            4'b1000: seg_output = 7'b1111111; // 8
-            4'b1001: seg_output = 7'b1101111; // 9
-            default: seg_output = 7'b0000000; // blank or error
-        endcase
-    end
+
+  always @(bcd)
+  begin
+    case (bcd)
+      4'b0000: seg = 7'b0000001;
+      4'b0001: seg = 7'b1001111;
+      4'b0010: seg = 7'b0010010;
+      4'b0011: seg = 7'b0000110;
+      4'b0100: seg = 7'b1001100;
+      4'b0101: seg = 7'b0100100;
+      4'b0110: seg = 7'b0100000;
+      4'b0111: seg = 7'b0001111;
+      4'b1000: seg = 7'b0000000;
+      4'b1001: seg = 7'b0000100;
+      default: seg = 7'bxxxxxxx;
+    endcase
+  end
 endmodule
 ```
 
 **Testbench for Seven-Segment Display:**
 
 ```
-`timescale 1ns / 1ps
+`timescale 1ns/1ns
+module bcd_7_segment_tb();
+reg [3:0]bcd;
+wire [6:0]seg;
+bcd_7_seg dut(.bcd(bcd),.seg(seg));
 
-module seven_segment_display_tb;
-    // Inputs
-    reg [3:0] binary_input;
-
-    // Outputs
-    wire [6:0] seg_output;
-
-    // Instantiate the Unit Under Test (UUT)
-    seven_segment_display uut (
-        .binary_input(binary_input),
-        .seg_output(seg_output)
-    );
-
-    // Test procedure
-    initial begin
-        // Initialize inputs
-        binary_input = 4'b0000;
-
-        // Apply test cases
-        #10 binary_input = 4'b0000; // Display 0
-        #10 binary_input = 4'b0001; // Display 1
-        #10 binary_input = 4'b0010; // Display 2
-        #10 binary_input = 4'b0011; // Display 3
-        #10 binary_input = 4'b0100; // Display 4
-        #10 binary_input = 4'b0101; // Display 5
-        #10 binary_input = 4'b0110; // Display 6
-        #10 binary_input = 4'b0111; // Display 7
-        #10 binary_input = 4'b1000; // Display 8
-        #10 binary_input = 4'b1001; // Display 9
-        #10 $stop;
-    end
-
-    // Monitor outputs
-    initial begin
-        $monitor("Time=%0t | binary_input=%b | seg_output=%b", $time, binary_input, seg_output);
+initial
+    begin 
+          bcd=4'd0;
+        #2;bcd=4'd1;
+        #2;bcd=4'd2;
+        #2;bcd=4'd3;
+        #2;bcd=4'd4;
+        #2;bcd=4'd5;
+        #2;bcd=4'd6;
+        #2;bcd=4'd7;
+        #2;bcd=4'd8;
+        #2;
+        $finish;
     end
 endmodule
+
 ```
 **Sample output**
-
+```
+Time=0 | bcd=0000 | seg=0000001
+Time=2000 | bcd=0001 | seg=1001111
+Time=4000 | bcd=0010 | seg=0010010
+Time=6000 | bcd=0011 | seg=0000110
+Time=8000 | bcd=0100 | seg=1001100
+Time=10000 | bcd=0101 | seg=0100100
+Time=12000 | bcd=0110 | seg=0100000
+Time=14000 | bcd=0111 | seg=0001111
+Time=16000 | bcd=1000 | seg=0000000
+Time=18000 | bcd=1001 | seg=0000100
+```
 **Output waveform**
 
+![Screenshot 2024-09-26 122042](https://github.com/user-attachments/assets/9b5d684d-7ea5-40e0-aa08-0cf9db18f5cc)
 
 **Conclusion**
 
