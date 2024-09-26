@@ -65,7 +65,7 @@ module bcd_7_seg(
       4'b0111: seg = 7'b0001111;
       4'b1000: seg = 7'b0000000;
       4'b1001: seg = 7'b0000100;
-      default: seg = 7'bxxxxxxx;
+      default: seg = 7'b1111111;
     endcase
   end
 endmodule
@@ -91,6 +91,8 @@ initial
         #2;bcd=4'd6;
         #2;bcd=4'd7;
         #2;bcd=4'd8;
+        #2;bcd=4'd9;
+        #2;bcd=4'd10;
         #2;
         $finish;
     end
