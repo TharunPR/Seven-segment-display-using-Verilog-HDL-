@@ -1,41 +1,52 @@
-Aim
-To design and simulate a seven-segment display driver using Verilog HDL, and verify its functionality through a testbench in the Vivado 2023.1 environment. The objective is to implement the logic that converts a 4-bit binary input into the corresponding 7-segment display output for the digits 0 to 9.
+# DESIGN AND SIMULATION OF SEVEN SEGMENT DISPLAY 
 
-Apparatus Required
-Vivado 2023.1
-Computer system with a suitable operating system.
+**Aim**
 
-Procedure
+&emsp;&emsp;To design and simulate a seven-segment display driver using Verilog HDL, and verify its functionality through a testbench in the Vivado 2023.1 environment. The objective is to implement the logic that converts a 4-bit binary input into the corresponding 7-segment display output for the digits 0 to 9.<br>
 
-Launch Vivado 2023.1:
+**Apparatus Required**
 
-Open Vivado and create a new project.
-Design the Verilog Code:
+&emsp;&emsp;Vivado 2023.1<br>
+&emsp;&emsp;Computer system with a suitable operating system.<br>
 
-Write the Verilog code for the seven-segment display, defining the logic that maps a 4-bit binary input to the corresponding segments (a to g) of the display.
-Create the Testbench:
+**Procedure**
 
-Write a testbench to simulate the seven-segment display behavior. The testbench should apply various 4-bit input values and monitor the corresponding output on the seven-segment display.
-Add the Verilog Files:
+1.Launch Vivado 2023.1:<br>
 
-Add both the design module and the testbench in the Vivado project.
-Run Simulation:
+&emsp;&emsp;Open Vivado and create a new project.<br>
 
-Run the behavioral simulation to verify the output. Ensure the seven-segment display behaves correctly for binary inputs 0000 to 1001 (decimal 0 to 9).
-Observe the Waveforms:
+2.Design the Verilog Code:<br>
 
-Analyze the output waveforms in the simulation window, and verify that the correct segments light up for each digit.
-Save and Document Results:
+&emsp;&emsp;Write the Verilog code for the seven-segment display, defining the logic that maps a 4-bit binary input to the corresponding segments (a to g) of the display.<br>
 
-Capture screenshots of the waveform and save the simulation logs. These will be included in the lab report.
+3.Create the Testbench:<br>
 
-Diagram
+&emsp;&emsp;Write a testbench to simulate the seven-segment display behavior. The testbench should apply various 4-bit input values and monitor the corresponding output on the seven-segment display.<br>
+
+4.Add the Verilog Files:<br>
+
+&emsp;&emsp;Add both the design module and the testbench in the Vivado project.<br>
+
+5.Run Simulation:<br>
+
+&emsp;&emsp;Run the behavioral simulation to verify the output. Ensure the seven-segment display behaves correctly for binary inputs 0000 to 1001 (decimal 0 to 9).<br>
+
+6.Observe the Waveforms:<br>
+
+&emsp;&emsp;Analyze the output waveforms in the simulation window, and verify that the correct segments light up for each digit.<br>
+
+7.Save and Document Results:<br>
+
+&emsp;&emsp;Capture screenshots of the waveform and save the simulation logs. These will be included in the lab report.<br>
+
+**Diagram**
+
 ![image](https://github.com/user-attachments/assets/d7ecb419-906e-4e3b-9b82-f86ced4f364a)
 
 
-Verilog Code for Seven-Segment Display
+**Verilog Code for Seven-Segment Display**
 
-// seven_segment_display.v
+```
 module seven_segment_display (
     input wire [3:0] binary_input,
     output reg [6:0] seg_output
@@ -56,11 +67,11 @@ module seven_segment_display (
         endcase
     end
 endmodule
+```
 
+**Testbench for Seven-Segment Display:**
 
-Testbench for Seven-Segment Display:
-
-// seven_segment_display_tb.v
+```
 `timescale 1ns / 1ps
 
 module seven_segment_display_tb;
@@ -100,6 +111,12 @@ module seven_segment_display_tb;
         $monitor("Time=%0t | binary_input=%b | seg_output=%b", $time, binary_input, seg_output);
     end
 endmodule
+```
+**Sample output**
 
-Conclusion
-In this experiment, a seven-segment display driver was successfully designed and simulated using Verilog HDL. The simulation results confirmed that the display correctly represented the digits 0 to 9 based on the 4-bit binary input. The testbench effectively verified the functionality of the seven-segment display by applying various input combinations and observing the corresponding segment outputs. This experiment highlights how Verilog HDL can be used to control hardware components like a seven-segment display in digital systems.
+**Output waveform**
+
+
+**Conclusion**
+
+&emsp;&emsp;In this experiment, a seven-segment display driver was successfully designed and simulated using Verilog HDL. The simulation results confirmed that the display correctly represented the digits 0 to 9 based on the 4-bit binary input. The testbench effectively verified the functionality of the seven-segment display by applying various input combinations and observing the corresponding segment outputs. This experiment highlights how Verilog HDL can be used to control hardware components like a seven-segment display in digital systems.
