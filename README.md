@@ -1,4 +1,4 @@
-# Exp-No: 03 - Seven Segment Display using Verilog HDL and Testbench Verification
+# Exp-No: 02 - Seven Segment Display using Verilog HDL and Testbench Verification
 
 **Aim:** <br>
 <br>
